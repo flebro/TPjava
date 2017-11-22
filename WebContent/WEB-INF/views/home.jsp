@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
 <h2>Bienvenue ${username}</h2>
+<form action="login" method="post">
+	<button class="btn waves-effect waves-light" type="submit"
+		name="action">Se Déconnecter</button>
+</form>

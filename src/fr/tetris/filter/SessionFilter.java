@@ -18,7 +18,8 @@ public class SessionFilter implements Filter {
 		
 			HttpServletRequest request = (HttpServletRequest) req;
 			HttpServletResponse response = (HttpServletResponse) resp;
-			if((request.getSession().getAttribute("username")== null || request.getSession().getAttribute("username")== "") && !request.getRequestURI().contains("/login")){
+			if((!request.getRequestURI().contains("/css")  && !request.getRequestURI().contains("/js") && !request.getRequestURI().contains("/login")) &&
+					(request.getSession().getAttribute("username")== null || request.getSession().getAttribute("username")== "")){
 				response.sendRedirect(request.getContextPath() + "/login");
 			}
 			else {

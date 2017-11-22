@@ -1,22 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
-<div class="card">
-	<div class="card-body">
-		<form method="post" action="login">
-			<div class="form-group">
-				<label for="usernameInput">Username</label> 
-				<input name="login" type="text"
-					class="form-control" id="usernameInput" placeholder="Username">
-			</div>
-			<div class="form-group">
-				<label for="passwordInput">Mot de passe</label> 
-				<input  name="motdepasse"
-					type="password" class="form-control" id="passwordInput"
-					placeholder="Mot de passe">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Ok</button>
-		</form>
+<form class="col s12" action="login" method="post">
+	<div class="row">
+		<div class="input-field col s6">
+			<input id="login" name="login" type="text" class="validate">
+			<label for="login">Username</label>
+		</div>
+		<div class="input-field col s6">
+			<input id="motdepasse" name="motdepasse" type="text" class="validate">
+			<label for="motdepasse">Mot de passe</label>
+		</div>
 	</div>
-</div>
+	<div class="row">
+		<button type="submit" class="btn btn-primary right">Ok</button>
+	</div>
+</form>
