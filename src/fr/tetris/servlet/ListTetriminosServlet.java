@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.tetris.views.Rendu;
+
 /**
  * Servlet implementation class ListTetriminosServlet
  */
 @WebServlet("/tetriminos")
-public class ListTetriminosServlet extends HttpServlet {
+public class ListTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -19,7 +21,7 @@ public class ListTetriminosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// On redirect
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
+		Rendu.listeTetriminos(getTetriminoDAO().findAll(), getServletContext(), request, response);
 	}
 
 }

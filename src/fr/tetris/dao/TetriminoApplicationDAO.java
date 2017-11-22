@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import fr.tetris.model.Tetrimino;
 
-public class TetriminoApplicationDAO {
+public class TetriminoApplicationDAO implements IDAO {
 	
 	private HashMap<String, Tetrimino> tetriminos = new HashMap<>();
 	

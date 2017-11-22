@@ -14,7 +14,7 @@ import fr.tetris.model.Tetrimino;
  * Servlet implementation class DeleteTetriminoServlet
  */
 @WebServlet("/deleteTetrimino")
-public class DeleteTetriminoServlet extends HttpServlet {
+public class DeleteTetriminoServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
     
 	/**
@@ -22,10 +22,9 @@ public class DeleteTetriminoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		TetriminoApplicationDAO dao = (TetriminoApplicationDAO) this.getServletContext().getAttribute("tetriminosDAO");
-		Tetrimino tetrimino = dao.get(id);
+		Tetrimino tetrimino = getTetriminoDAO().get(id);
 		if (tetrimino != null) {
-			dao.delete(tetrimino);
+			getTetriminoDAO().delete(tetrimino);
 		}
 		// On redirect
 		this.getServletContext().getRequestDispatcher("/tetriminos").forward(request, response);
