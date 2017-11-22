@@ -27,7 +27,7 @@ public class DeleteTetriminoServlet extends DataAccessServlet {
 			getTetriminoDAO().delete(tetrimino);
 		}
 		// On redirect
-		this.getServletContext().getRequestDispatcher("/tetriminos").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/tetriminos");
 	}
 
 }

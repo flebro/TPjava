@@ -19,7 +19,7 @@ public class SessionFilter implements Filter {
 			HttpServletRequest request = (HttpServletRequest) req;
 			HttpServletResponse response = (HttpServletResponse) resp;
 			if((request.getSession().getAttribute("username")== null || request.getSession().getAttribute("username")== "") && !request.getRequestURI().contains("/login")){
-				request.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/login");
 			}
 			else {
 				chain.doFilter(req, resp);

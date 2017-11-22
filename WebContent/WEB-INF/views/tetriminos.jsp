@@ -4,10 +4,16 @@
 
 <ul>
 	<c:forEach items="${tetriminosDAO.findAll() }" var="tetrimino">
-		<li><c:out value="${tetrimino.nom }"></c:out> <a
+		<li>
+	
+		Nom : <c:out value="${tetrimino.nom }"></c:out><br/>
+		Couleur : <c:out value="${tetrimino.couleur }"></c:out><br/>
+		<a
 			href="http://localhost:8080/Tetris/editTetrimino?id=${tetrimino.id }">edit</a>
 			<a
 			href="http://localhost:8080/Tetris/deleteTetrimino?id=${tetrimino.id }">delete</a>
 		</li>
 	</c:forEach>
+	<br/>	
+	<a href="http://localhost:8080/Tetris/editTetrimino">Création</a>
 </ul>
