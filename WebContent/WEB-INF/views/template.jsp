@@ -7,6 +7,7 @@
 <title>${pageTitle }</title>
 </head>
 <body>
+	<jsp:include page="header.jsp" />
 	<jsp:include page="${contentJsp }"/>
 </body>
 </html>

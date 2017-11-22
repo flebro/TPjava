@@ -21,8 +21,14 @@ private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
-		
-		Rendu.editionTetrimino(getOrCreate(id), getServletContext(), req, resp);
+		String title = "";
+		if(id == null) {
+			title = "Ajout de tetriminos";
+		}
+		else {
+			title = "Edition de tetriminos";
+		}
+		Rendu.editionTetrimino(title,getOrCreate(id), getServletContext(), req, resp);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

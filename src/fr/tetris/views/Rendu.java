@@ -21,12 +21,23 @@ public class Rendu {
 		template("Liste tetrominos", "/WEB-INF/views/tetriminos.jsp", context, req, resp);
 	}
 	
-	public static void editionTetrimino(Tetrimino tetrimino, ServletContext context, 
+	public static void editionTetrimino(String title,Tetrimino tetrimino, ServletContext context, 
 			HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		req.setAttribute("tetrimino", tetrimino);
-
-		template("Edition tetromino", "/WEB-INF/views/editTetrimino.jsp", context, req, resp);
+		template(title, "/WEB-INF/views/editTetrimino.jsp", context, req, resp);
+	}
+	
+	public static void home(String username, ServletContext context, 
+			HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		req.setAttribute("username", username);
+		template("Bienvenue", "/WEB-INF/views/home.jsp", context, req, resp);
+	}
+	public static void login(ServletContext context, 
+			HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		template("Bienvenue", "/WEB-INF/views/login.jsp", context, req, resp);
 	}
 	
 	private static void template(String title, String contentJsp, ServletContext context, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
