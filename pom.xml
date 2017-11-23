@@ -53,12 +53,17 @@
 			<version>5.1.40</version>
 		</dependency>
 
-
 		<!-- Commons DBCP : DataBase Connection Pooling -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
 		</dependency>
 	</dependencies>
 

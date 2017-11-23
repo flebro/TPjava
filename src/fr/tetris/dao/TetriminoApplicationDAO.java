@@ -1,21 +1,22 @@
 package fr.tetris.dao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.tetris.model.Tetrimino;
 
+@Repository @Transactional
 public class TetriminoApplicationDAO implements IDAO<Tetrimino> {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Tetrimino get(String id) {
+	public Tetrimino get(long id) {
 		return em.find(Tetrimino.class, id);
 	}
 	

@@ -8,7 +8,7 @@
 </div>
 
 <ul class="collection">
-	<c:forEach items="${tetriminosDAO.findAll() }" var="tetrimino">
+	<c:forEach items="${tetriminos }" var="tetrimino">
 		<li class="collection-item avatar"><span class="title">${tetrimino.nom }</span>
 			<p>Couleur : ${tetrimino.couleur }</p> <a
 			class="waves-effect waves-light btn"
