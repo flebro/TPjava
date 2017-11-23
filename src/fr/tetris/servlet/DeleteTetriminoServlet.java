@@ -22,7 +22,7 @@ public class DeleteTetriminoServlet extends DataAccessServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		Tetrimino tetrimino = getTetriminoDAO().get(id);
+		Tetrimino tetrimino = null;
 		if (tetrimino != null) {
 			getTetriminoDAO().delete(tetrimino);
 		}

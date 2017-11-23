@@ -4,14 +4,14 @@ import java.util.List;
 
 import fr.tetris.model.Tetrimino;
 
-public interface IDAO {
+public interface IDAO<T> {
 
-	Tetrimino get(String id);
+	T get(String id);
 	
-	List<Tetrimino> findAll();
+	List<T> findAll();
 	
-	Tetrimino save(Tetrimino model);
+	T save(T model);
 	
-	void delete(Tetrimino model);
+	void delete(T model);
 	
 }

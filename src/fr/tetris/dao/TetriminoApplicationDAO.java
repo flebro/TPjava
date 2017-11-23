@@ -5,42 +5,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import fr.tetris.model.Tetrimino;
 
-public class TetriminoApplicationDAO implements IDAO {
-	
-	private HashMap<String, Tetrimino> tetriminos = new HashMap<>();
-	
-	public TetriminoApplicationDAO() {
-		// TODO Auto-generated constructor stub
-		Tetrimino tetrimino = new Tetrimino();
-		tetrimino.setNom("1");
-		tetrimino.setCouleur("136");
-		save(tetrimino);
-		tetrimino = new Tetrimino();
-		tetrimino.setNom("25456");
-		tetrimino.setCouleur("136456546");
-		save(tetrimino);
-	}
+public class TetriminoApplicationDAO implements IDAO<Tetrimino> {
+
+	@PersistenceContext
+	private EntityManager em;
 	
 	public Tetrimino get(String id) {
-		return tetriminos.get(id);
+		return em.find(Tetrimino.class, id);
 	}
 	
 	public List<Tetrimino> findAll() {
-		return new ArrayList<>(tetriminos.values());
+		return em.createQuery("FROM Tetrimino").getResultList();
 	}
 	
 	public Tetrimino save(Tetrimino tetrimino) {
-		if (tetrimino.getId() == null) {
-			tetrimino.setId(UUID.randomUUID().toString());
-		}
-		tetriminos.put(tetrimino.getId(), tetrimino);
-		return tetrimino;
+		return em.merge(tetrimino);
 	}
 	
 	public void delete(Tetrimino tetrimino) {
-		tetriminos.remove(tetrimino.getId());
+		em.remove(tetrimino);
 	}
 
 }

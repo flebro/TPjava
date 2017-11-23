@@ -18,9 +18,9 @@ public abstract class DataAccessServlet extends HttpServlet {
 	}
 
 	protected Tetrimino getOrCreate(String id) {
-		Tetrimino tetrimino = getTetriminoDAO().get(id);
+		Tetrimino tetrimino = null;
 		if (id != null) {
-			tetrimino = getTetriminoDAO().get(id);
+			tetrimino = null;
 		}
 		
 		if (tetrimino == null) {
