@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.tetris.model.Utilisateur;
 
 @Repository @Transactional
-public class UtilisateurApplicationDAO implements IDAO<Utilisateur> {
+public class UtilisateurApplicationDAO implements IUtilisateurDAO {
 	@PersistenceContext
 	private EntityManager em;
 
@@ -37,6 +37,15 @@ public class UtilisateurApplicationDAO implements IDAO<Utilisateur> {
 	public void delete(Utilisateur model) {
 		em.remove(model);
 		
+	}
+	
+	@Override
+	public Utilisateur getByLogin(String login) {
+		// TODO Auto-generated method stub
+		List<Utilisateur> utils = em.createQuery("FROM Utilisateur WHERE Nom = :nom")
+				.setParameter("nom", login)
+				.getResultList();
+		return utils.isEmpty() ? null : utils.get(0);
 	}
 
 }

@@ -1,5 +1,6 @@
 package fr.tetris.servlet;
 import fr.tetris.dao.IDAO;
+import fr.tetris.dao.IUtilisateurDAO;
 import fr.tetris.model.Utilisateur;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,10 +18,11 @@ import fr.tetris.views.Rendu;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends AbstractSpringServlet {
 	private static final long serialVersionUID = 1L;
+	
 	@Autowired
-	private IDAO<Utilisateur> daoUtilisateur;
+	private IUtilisateurDAO daoUtilisateur;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,22 +38,24 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String username = request.getParameter("login");
 		 String password = request.getParameter("motdepasse");
-		 HttpSession session = request.getSession();
-		 if(username != "" && password != "")
-		 {
-
-			// daoUtilisateur.get(myUser.getId());
-
-			 session.setAttribute("username", username );
-			 session.setAttribute("password",password);
+		 
+		 Utilisateur user = daoUtilisateur.getByLogin(username);
+		 if (user == null) {
+			 // On créé
+			 user = new Utilisateur();
+			 user.setNom(username);
+			 user.setMDP(password);
+			 user = daoUtilisateur.save(user);
+		 } else if (!user.getMDP().equals(password)) {
+			 user = null;
+		 }
+		 
+		 if (user != null) {
+			 request.getSession().setAttribute("user", user);
 			 response.sendRedirect( request.getContextPath() + "/home");
-		 }
-		 else {
+		 } else {
 			 response.sendRedirect( request.getContextPath() + "/login");
-		 }
-		 
-		// this.getServletContext().getRequestDispatcher("/home").forward( request, response );
-		 
+		 }	 
 		
 	}
 

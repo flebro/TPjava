@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.tetris.model.Utilisateur;
 import fr.tetris.views.Rendu;
 
 /**
@@ -32,7 +33,7 @@ public class HomeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		HttpSession session=request.getSession();
-		String username = (String) session.getAttribute("username");
+		String username = ((Utilisateur) session.getAttribute("user")).getNom();
 		//this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward( request, response );
 		Rendu.home(username, getServletContext(), request, response);
 	}
