@@ -12,9 +12,12 @@
 		<li class="collection-item avatar"><span class="title">${tetrimino.nom }</span>
 			<p>Couleur : ${tetrimino.couleur }</p> <a
 			class="waves-effect waves-light btn"
-			href="http://localhost:8080/Tetris/editTetrimino?id=${tetrimino.id }">Editer</a>
+			href="http://localhost:8080/Tetris/tetrimino/${tetrimino.id }">Editer</a>
 			<a class="waves-effect waves-light btn"
-			href="http://localhost:8080/Tetris/deleteTetrimino?id=${tetrimino.id }">Supprimer</a>
+			onclick="$.ajax({
+			    type: 'DELETE',
+			    url: 'http://localhost:8080/Tetris/tetrimino/${tetrimino.id }'
+			});" >Supprimer</a>
 		</li>
 	</c:forEach>
 </ul>

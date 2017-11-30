@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- Configuration du layout principal -->
+	<definition name="base.definition" template="/WEB-INF/views/template.jsp">
+		<put-attribute name="pageTitle" value=""  cascade="true" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+
+	<!-- Configuration de la vue "home" -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="pageTitle" value="Accueil"  cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	
+		<!-- Configuration de la vue "home" -->
+	<definition name="login" extends="base.definition">
+		<put-attribute name="pageTitle" value="Identification" cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+		<!-- Configuration de la vue "home" -->
+	<definition name="tetriminos" extends="base.definition">
+		<put-attribute name="pageTitle" value="Tetriminos" cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/views/tetriminos.jsp" />
+	</definition>
+	
+			<!-- Configuration de la vue "home" -->
+	<definition name="editTetrimino" extends="base.definition">
+		<put-attribute name="pageTitle" value="Tetrimino" cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/views/editTetrimino.jsp" />
+	</definition>
+
+</tiles-definitions>
+
